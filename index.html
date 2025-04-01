@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link
+      rel="manifest"
+      href="/manifest.json" />
+    <link
       rel="icon"
       type="image/svg+xml"
       href="/vite.svg" />
@@ -18,6 +21,9 @@
     <meta
       name="apple-mobile-web-app-title"
       content="keliang7'web" />
+    <link
+      rel="apple-touch-icon"
+      href="./src/assets/ok.svg" />
     <title>keliang7'web</title>
   </head>
   <body>
@@ -26,4 +32,12 @@
       type="module"
       src="/src/main.ts"></script>
   </body>
+  <script>
+    const isInStandaloneMode = () =>
+      "standalone" in window.navigator && window.navigator.standalone;
+
+    if (!isInStandaloneMode()) {
+      alert("请使用 Safari 浏览器，并手动添加到主屏幕以获得更好的体验！");
+    }
+  </script>
 </html>
