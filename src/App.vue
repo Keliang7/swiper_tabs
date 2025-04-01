@@ -3,5 +3,5 @@ import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <div class="h-100vh"><HelloWorld msg="Vite + Vue" /></div>
+  <div class="h-full"><HelloWorld msg="Vite + Vue" /></div>
 </template>

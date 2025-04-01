@@ -56,7 +56,7 @@ const tabsSwiperOptions = reactive({
 <template>
   <div class="h-full flex flex-col">
     <!-- 头部 tab -->
-    <div class="h-10 mb-2">
+    <div class="h-10 mb-2 bg-yellow">
       <Swiper
         v-bind="tabsSwiperOptions"
         class="h-full">
