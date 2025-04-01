@@ -22,6 +22,9 @@ const slides: SlideItem[] = [
   { title: "Slide 8", desc: "Description for slide 8", color: "#FFEB3B" },
 ];
 
+// 添加一个响应式数组来跟踪哪些slide的内容应该加载
+const loadedSlides = ref<boolean[]>(Array(slides.length).fill(false));
+
 // Swiper 实例
 const mainSwiper = ref<SwiperInstance | null>(null);
 const tabsSwiper = ref<SwiperInstance | null>(null);
@@ -30,6 +33,9 @@ const activeIndex = ref<number>(0);
 // 事件：更新 activeIndex
 const handleSlideChange = (swiper: SwiperInstance) => {
   activeIndex.value = swiper.activeIndex;
+  // 标记当前slide为已加载
+  loadedSlides.value[swiper.activeIndex] = true;
+  console.log(loadedSlides.value);
 };
 
 // Swiper 配置
@@ -83,8 +89,11 @@ const tabsSwiperOptions = reactive({
           <div
             class="h-full flex flex-col justify-center items-center"
             :style="{ backgroundColor: slide.color }">
-            <div class="text-lg font-bold">{{ slide.title }}</div>
-            <div class="text-sm">{{ slide.desc }}</div>
+            <div v-if="loadedSlides[index] || activeIndex === index">
+              <div>page</div>
+              <div class="text-lg font-bold">{{ slide.title }}</div>
+              <div class="text-sm">{{ slide.desc }}</div>
+            </div>
           </div>
         </SwiperSlide>
       </Swiper>
